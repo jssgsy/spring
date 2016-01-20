@@ -23,14 +23,15 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 <!-- 	<property name="teacher" ref="teacher" /> -->
 </bean>
 
-<!-- ResourceBundleMessageSource，下面的配置要求在类路径下有一个messages.properties文件 -->
+<!-- 这里的id必须为messageSource,经验证其实并非如此 -->
 <bean id="messageSource"
 	class="org.springframework.context.support.ResourceBundleMessageSource">
 	<property name="basenames">
 		<list>
-			<value>messages</value>
+			<value>messages</value><!-- 此时系统假设在类路径下有一个messages.properties文件 -->
 		</list>
 	</property>
+	<property name="defaultEncoding" value="utf-8" /><!-- 这样就可以在messages.properties中使用中文 -->
 </bean>
 
 
