@@ -34,6 +34,25 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 	<property name="defaultEncoding" value="utf-8" /><!-- 这样就可以在messages.properties中使用中文 -->
 </bean>
 
-
+<bean id="myProperties" class="com.univ.ioc.MyProperties">
+	<property name="name" value="lml" />
+	<!-- 这是注入java.util.Properties实例的第一种方法 -->
+	<property name="pros1">
+		<value>
+			key1=key1value
+			key2=key2value
+			key3=key3value
+		</value>
+	</property>
+	<!-- 这是注入java.util.Properties实例的第二种方法 -->
+	<property name="pros2">
+		<props>
+			<prop key="key1">key1value</prop>
+			<prop key="key2">key2value</prop>
+			<prop key="key3">key3value</prop>
+		</props>
+	</property>
+	
+</bean>
 
 </beans>

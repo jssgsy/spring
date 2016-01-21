@@ -1,6 +1,10 @@
 package com.univ.junit;
 
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Properties;
+import java.util.Set;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -10,6 +14,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 
+import com.univ.ioc.MyProperties;
 import com.univ.ioc.Student;
 
 /** 
@@ -88,6 +93,29 @@ public class JUnitTest {
     	System.out.println(fileSys.isOpen());
     	System.out.println(fileSys.isReadable());
     	
+    }
+    
+    /**
+     * 测试java.util.Properties实例注入的两种方式方式
+     * 注意Properties循环的方法(和map类似)
+     */
+    @Test
+    public void propertiesTest(){
+    	ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+    	MyProperties pros = (MyProperties) ac.getBean("myProperties");
+    	//测试第一种方法
+    	Properties pros1 = pros.getPros1();
+    	Set<Entry<Object, Object>> entrySet1 = pros1.entrySet();
+    	for (Entry<Object, Object> entry : entrySet1) {
+    		System.out.println(entry.getKey() + ": " + entry.getValue());
+		}
+    	System.out.println("----------------------------------");
+    	//测试第二种方法
+    	Properties pros2 = pros.getPros2();
+    	Set<Entry<Object, Object>> entrySet2 = pros2.entrySet();
+    	for (Entry<Object, Object> entry : entrySet2) {
+    		System.out.println(entry.getKey() + ": " + entry.getValue());
+		}
     }
     
 }
