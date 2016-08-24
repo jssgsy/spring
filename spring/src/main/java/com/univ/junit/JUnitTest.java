@@ -1,21 +1,17 @@
 package com.univ.junit;
 
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Properties;
-import java.util.Set;
-
+import com.univ.ioc.MyProperties;
+import com.univ.ioc.Student;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
 
-import com.univ.ioc.MyProperties;
-import com.univ.ioc.Student;
+import java.util.Map.Entry;
+import java.util.Properties;
+import java.util.Set;
 
 /** 
  * @author univ 
