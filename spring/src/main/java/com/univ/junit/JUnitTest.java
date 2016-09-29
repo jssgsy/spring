@@ -22,7 +22,8 @@ import java.util.Set;
 public class JUnitTest {
 
 	/**
-     * 演示简单的依赖注入功能
+     * 演示简单的依赖注入功能。
+	 * 若同时有构造和setter注入,setter注入会覆盖构造注入,这是很自然的事情。
      */
     @Test
     public void diTest(){
