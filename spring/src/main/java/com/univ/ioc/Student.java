@@ -7,7 +7,7 @@ public class Student {
 	private int age;	
 	
 	/*
-	 * 使用@Autowired可以省去此字段的setter方法和配置文件bean定义中的property属性
+	 * 使用@Autowired可以省去此字段的setter方法和配置文件bean定义中的property属性.默认byType
 	 */
 	@Autowired
 	private Teacher teacher;
