@@ -41,6 +41,7 @@ public class JUnitTest {
      */
     @Test
     public void  resourceBundleMessageSourceTest(){
+        //加载applicationContext时会自动找id为messageSource的bean
     	 MessageSource resources = new ClassPathXmlApplicationContext("applicationContext.xml");
     	//到messages.properties（见配置文件） 找key等于key1的值
     	 String key1 = resources.getMessage("key1", null,"no default value for key1",null);
