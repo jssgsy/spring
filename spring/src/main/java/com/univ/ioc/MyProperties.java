@@ -6,7 +6,11 @@ import java.util.Properties;
  * @author univ 
  * @date 2016年1月21日 上午9:16:14 
  * @version v1.0
- * @Description: 
+ * @Description:
+ */
+
+/**
+ * 用于演示Properties类型属性的注入
  */
 public class MyProperties {
 
