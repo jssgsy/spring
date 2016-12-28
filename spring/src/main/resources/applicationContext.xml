@@ -1,58 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns:context="http://www.springframework.org/schema/context"
-xsi:schemaLocation="http://www.springframework.org/schema/beans
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/context
-http://www.springframework.org/schema/context/spring-context.xsd">
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx.xsd ">
 
-<!-- 要启用不同的注解需要注册不同的Processor，但可以统一只注册下面这句 -->
-<context:annotation-config/>
+    <!-- 要启用不同的注解需要注册不同的Processor，但可以统一只注册下面这句 -->
+    <context:annotation-config/>
 
-<!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>   -->
+    <!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>   -->
 
-<!-- 基本的依赖注入 -->
-<bean id="teacher" class="com.univ.ioc.Teacher">
-	<property name="name" value="teacherName" />
-	<property name="age" value="23" />
-</bean>
-<bean id="student" class="com.univ.ioc.Student">
-	<property name="name" value="studentName" />
-	<property name="age" value="10" />
-<!-- 	<property name="teacher" ref="teacher" /> -->
-</bean>
+    <!-- 基本的依赖注入 -->
+    <bean id="teacher" class="com.univ.ioc.Teacher">
+        <property name="name" value="teacherName"/>
+        <property name="age" value="23"/>
+    </bean>
+    <bean id="student" class="com.univ.ioc.Student">
+        <property name="name" value="studentName"/>
+        <property name="age" value="10"/>
+        <!-- 	<property name="teacher" ref="teacher" /> -->
+    </bean>
 
-<!-- 这里的id必须为messageSource,经验证其实并非如此 -->
-<bean id="messageSource"
-	class="org.springframework.context.support.ResourceBundleMessageSource">
-	<property name="basenames">
-		<list>
-			<value>messages</value><!-- 此时系统假设在类路径下有一个messages.properties文件 -->
-		</list>
-	</property>
-	<property name="defaultEncoding" value="utf-8" /><!-- 这样就可以在messages.properties中使用中文 -->
-</bean>
+    <!-- 这里的id必须为messageSource,经验证其实并非如此 -->
+    <bean id="messageSource"
+          class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>messages</value><!-- 此时系统假设在类路径下有一个messages.properties文件 -->
+            </list>
+        </property>
+        <property name="defaultEncoding" value="utf-8"/><!-- 这样就可以在messages.properties中使用中文 -->
+    </bean>
 
-<bean id="myProperties" class="com.univ.ioc.MyProperties">
-	<property name="name" value="lml" />
-	<!-- 这是注入java.util.Properties实例的第一种方法 -->
-	<property name="pros1">
-		<value>
-			key1=key1value
-			key2=key2value
-			key3=key3value
-		</value>
-	</property>
-	<!-- 这是注入java.util.Properties实例的第二种方法 -->
-	<property name="pros2">
-		<props>
-			<prop key="key1">key1value</prop>
-			<prop key="key2">key2value</prop>
-			<prop key="key3">key3value</prop>
-		</props>
-	</property>
-	
-</bean>
+    <bean id="myProperties" class="com.univ.ioc.MyProperties">
+        <property name="name" value="lml"/>
+        <!-- 这是注入java.util.Properties实例的第一种方法 -->
+        <property name="pros1">
+            <value>
+                key1=key1value
+                key2=key2value
+                key3=key3value
+            </value>
+        </property>
+        <!-- 这是注入java.util.Properties实例的第二种方法 -->
+        <property name="pros2">
+            <props>
+                <prop key="key1">key1value</prop>
+                <prop key="key2">key2value</prop>
+                <prop key="key3">key3value</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!--aop的配置-->
+    <!--定义目标类，实际开发中一般是service层的类-->
+    <bean id="singer" class="com.univ.aop.Singer"/>
+
+    <!--定义切面，注意此时的audience还只是一个普普通通的bean，真正成为切面是声明aop:aspect ref="audience"时。
+        常见的切面如事务，日志，安全等
+        -->
+    <bean id="audience" class="com.univ.aop.Audience"/>
+
+    <aop:config>
+        <!--使audience真正成为切面-->
+        <aop:aspect ref="audience">
+            <!--定义属于此切面所要应用的切点-->
+            <aop:pointcut id="singerCut" expression="execution(* com.univ.aop.Singer.sing(..))"/>
+
+            <!--前置通知-->
+            <aop:before method="beforeSing" pointcut-ref="singerCut"/>
+
+            <!--后置通知-->
+            <aop:after method="afterSing" pointcut-ref="singerCut"/>
+        </aop:aspect>
+    </aop:config>
+
 
 </beans>
