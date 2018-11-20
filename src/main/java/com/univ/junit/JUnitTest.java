@@ -2,6 +2,7 @@ package com.univ.junit;
 
 import com.univ.ioc.MyProperties;
 import com.univ.ioc.Student;
+import com.univ.ioc.annotation.Sku;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
@@ -115,6 +116,13 @@ public class JUnitTest {
     		System.out.println(entry.getKey() + ": " + entry.getValue());
 		}
     }
+    
+    @Test
+	public void annotationTest() {
+		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+		Sku sku = (Sku) ac.getBean("sku");
+		System.out.println(sku);
+	}
     
 }
 
