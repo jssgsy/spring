@@ -13,9 +13,6 @@ package com.univ.aop;
  */
 public class Singer {
 
-    /**
-     * 这里能否有参数，如果允许，具体的用法是怎样的？
-     */
     public void sing(){
         System.out.println("Singer.sing()");
     }

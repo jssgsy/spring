@@ -3,15 +3,12 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context.xsd
 http://www.springframework.org/schema/aop
-http://www.springframework.org/schema/aop/spring-aop.xsd
-http://www.springframework.org/schema/tx
-http://www.springframework.org/schema/tx/spring-tx.xsd ">
+http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!--context:annotation-config的作用是可以使用@Autowired，@Inject等来省略xml配置文件中的property属性，简化配置-->
     <!--<context:annotation-config/>-->
@@ -73,6 +70,7 @@ http://www.springframework.org/schema/tx/spring-tx.xsd ">
         -->
     <bean id="audience" class="com.univ.aop.Audience"/>
 
+    <!--aop:config是aop配置的根元素-->
     <aop:config>
         <!--使audience真正成为切面-->
         <aop:aspect ref="audience">
