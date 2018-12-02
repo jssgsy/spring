@@ -13,8 +13,11 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
     <!--context:annotation-config的作用是可以使用@Autowired，@Inject等来省略xml配置文件中的property属性，简化配置-->
     <!--<context:annotation-config/>-->
 
-    <!--context:component-scan的作用是可以使用@Component，@Controller，@Service等等来省略xml配置文件中的bean元素，简化配置。
-    另外，context:component-scan是context:annotation-config的超集，配置了前者则不需要配置后者-->
+    <!--
+    context:component-scan的作用是可以使用@Component，@Controller，@Service等等来省略xml配置文件中的bean元素，简化配置。
+    另外，context:component-scan是context:annotation-config的超集，配置了前者则不需要配置后者；
+    可配置多个；
+    -->
     <context:component-scan base-package="com.univ.ioc.annotation"/>
 
     <!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>   -->
