@@ -63,19 +63,19 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!--aop的配置-->
     <!--定义目标类，实际开发中一般是service层的类-->
-    <bean id="singer" class="com.univ.aop.Singer"/>
+    <bean id="singer" class="com.univ.aop.xml.Singer"/>
 
     <!--定义切面，注意此时的audience还只是一个普普通通的bean，真正成为切面是声明aop:aspect ref="audience"时。
         常见的切面如事务，日志，安全等
         -->
-    <bean id="audience" class="com.univ.aop.Audience"/>
+    <bean id="audience" class="com.univ.aop.xml.Audience"/>
 
     <!--aop:config是aop配置的根元素-->
     <aop:config>
         <!--使audience真正成为切面-->
         <aop:aspect ref="audience">
             <!--定义属于此切面所要应用的切点-->
-            <aop:pointcut id="singerCut" expression="execution(* com.univ.aop.Singer.sing(..))"/>
+            <aop:pointcut id="singerCut" expression="execution(* com.univ.aop.xml.Singer.sing(..))"/>
 
             <!--前置通知-->
             <aop:before method="beforeSing" pointcut-ref="singerCut"/>
@@ -85,5 +85,13 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
         </aop:aspect>
     </aop:config>
 
+    <!--################################注解aop begin ################################-->
+    <!--启用注解形式的aop(@Aspect，@Before)-->
+    <aop:aspectj-autoproxy />
+
+    <!--供注解形式的aop使用-->
+    <bean id="a_annotation" class="com.univ.aop.annotation.A"/>
+    <bean id="b_annotation" class="com.univ.aop.annotation.B"/>
+    <!--################################注解aop end ################################-->
 
 </beans>
