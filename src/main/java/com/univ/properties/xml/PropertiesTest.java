@@ -1,7 +1,6 @@
-package com.univ.properties;
+package com.univ.properties.xml;
 
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -12,8 +11,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class PropertiesTest {
 
+    /**
+     * xml配置文件中引用外部属性的形式
+     */
     @Test
-    public void test1() {
+    public void test() {
         ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
         PropertyBean propertyBean = (PropertyBean) ac.getBean("propertyBean");
         System.out.println(propertyBean);

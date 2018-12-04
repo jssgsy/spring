@@ -100,7 +100,7 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
     <!--################################外部属性文件 begin ################################-->
     <!--引入外部属性文件，通过location指定-->
     <context:property-placeholder location="db.properties"/>
-    <bean id="propertyBean" class="com.univ.properties.PropertyBean">
+    <bean id="propertyBean" class="com.univ.properties.xml.PropertyBean">
         <!--如果没有找到${jdbc.user}与${jdbc.password}默认会抛异常，可通过property-placeholder的属性进行控制-->
         <property name="user" value="${jdbc.user}"/>
         <property name="password" value="${jdbc.password}"/>
