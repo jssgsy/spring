@@ -3,10 +3,10 @@ package com.univ.ioc;
 import java.util.Properties;
 
 /** 
- * @author univ 
- * @date 2016年1月21日 上午9:16:14 
+ * author univ
+ * date 2016年1月21日 上午9:16:14
  * @version v1.0
- * @Description:
+ * description:
  */
 
 /**

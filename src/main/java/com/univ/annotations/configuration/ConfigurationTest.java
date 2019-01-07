@@ -6,9 +6,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 /**
- * @author univ
- * @datetime 2019/1/7 11:54 AM
- * @description 使用@Import引入其它被@Configuration注解的类，此时便可以按照实际需要使用多个@Configuration注解了
+ * author univ
+ * date 2019/1/7 11:54 AM
+ * description 使用@Import引入其它被@Configuration注解的类，此时便可以按照实际需要使用多个@Configuration注解了
  */
 @Configuration
 @Import({ServiceConfiguration.class, DaoConfiguration.class})

@@ -12,9 +12,9 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.stereotype.Component;
 
 /**
- * @author univ
- * @datetime 2018/12/4 10:10 AM
- * @description 注解形式的引用外部属性文件
+ * author univ
+ * date 2018/12/4 10:10 AM
+ * description 注解形式的引用外部属性文件
  */
 
 @Configuration

@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 /**
- * @author univ
- * @datetime 2018/12/2 8:22 PM
- * @description @Primary的作用
+ * author univ
+ * date 2018/12/2 8:22 PM
+ * description @Primary的作用
  *
  * `@Primary`等价于xml配置文件中bean元素的primary属性，用来当有多个candidate时显示指定注入哪个bean
  */

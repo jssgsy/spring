@@ -6,9 +6,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 /**
- * @author univ
- * @datetime 2018/12/2 10:16 AM
- * @description 应用的注解配置类
+ * author univ
+ * date 2018/12/2 10:16 AM
+ * description 应用的注解配置类
  */
 
 /*

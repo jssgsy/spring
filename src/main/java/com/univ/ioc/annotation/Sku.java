@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * @author univ
- * @datetime 2018/11/20 10:37 AM
- * @description
+ * author univ
+ * date 2018/11/20 10:37 AM
+ * description
  */
 
 /*

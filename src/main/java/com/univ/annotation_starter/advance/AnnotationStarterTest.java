@@ -5,9 +5,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
- * @author univ
- * @datetime 2018/12/2 10:25 AM
- * @description 以注解配置类加自动扫描的方式启动容器
+ * author univ
+ * date 2018/12/2 10:25 AM
+ * description 以注解配置类加自动扫描的方式启动容器
  */
 public class AnnotationStarterTest {
 

@@ -1,9 +1,9 @@
 package com.univ.annotation_starter.basic;
 
 /**
- * @author univ
- * @datetime 2018/12/2 10:20 AM
- * @description 普通的类
+ * author univ
+ * date 2018/12/2 10:20 AM
+ * description 普通的类
  */
 public class B {
     private String name = "b-name";

@@ -15,10 +15,10 @@ import java.util.Properties;
 import java.util.Set;
 
 /** 
- * @author univ 
- * @date 2016年1月14日 下午2:42:09 
+ * author univ
+ * date 2016年1月14日 下午2:42:09
  * @version v1.0
- * @Description: 
+ * description:
  */
 public class JUnitTest {
 

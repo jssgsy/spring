@@ -4,9 +4,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author univ
- * @datetime 2019/1/7 11:53 AM
- * @description
+ * author univ
+ * date 2019/1/7 11:53 AM
+ * description
  */
 @Configuration
 public class DaoConfiguration {

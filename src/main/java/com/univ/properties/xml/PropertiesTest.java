@@ -5,9 +5,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * @author univ
- * @datetime 2018/12/4 9:29 AM
- * @description 外部属性文件
+ * author univ
+ * date 2018/12/4 9:29 AM
+ * description 外部属性文件
  */
 public class PropertiesTest {
 
