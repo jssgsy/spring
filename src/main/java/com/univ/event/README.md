@@ -1,0 +1,24 @@
+# spring的事件功能
+> ApplicationContext通过ApplicationEvent类和ApplicationListener接口进行事件处理。 如果将实现ApplicationListener接口的bean注入到上下文中，则每次使用ApplicationContext发布ApplicationEvent时，都会通知该bean。 本质上，这是标准的观察者设计模式。
+
+# 作用
+`解耦`。如代码中将注册与邮件、积分服务解耦了。这也是事件驱动的最大特性之一，如果需要在用户注册时完成其他操作，只需要再添加相应的事件订阅者即可。
+
+# [网络资料](http://www.importnew.com/26782.html)
+
+# 核心概念(类)
+* `事件`：继承`ApplicationEvent`便成为了一个事件；
+* `事件发布者`：实现`ApplicationEventPublisherAware`接口便有了事件发布能力，需要显示的借助`ApplicationEventPublisher`来发布，实现ApplicationEventPublisherAware是为了提供ApplicationEventPublisher实例；
+* `事件订阅者`：实现`ApplicationListene`r<E extends ApplicationEvent>便有了事件订阅能力，且通过泛型表明了其感兴趣的事件类型；
+
+# 说明
+* 各个订阅者之间接收到事件没有前后相关的顺序；
+* 经验证，各个事件订阅者之间使用的似乎都是同一个线程，说明是同步的？应该有异步的方式，后面补充
+
+
+
+
+
+
+
+
