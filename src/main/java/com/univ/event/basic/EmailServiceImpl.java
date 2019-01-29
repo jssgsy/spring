@@ -1,6 +1,7 @@
 package com.univ.event.basic;
 
 import org.springframework.context.ApplicationListener;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 /**
@@ -25,6 +26,7 @@ public class EmailServiceImpl implements EmailService, ApplicationListener<Regis
      * @param event
      */
     @Override
+    @Async  // 使此事件为异步事件
     public void onApplicationEvent(RegisterEvent event) {
         System.out.println("EmailServiceImpl 当前线程：" + Thread.currentThread().getName());
         sendEmail((String) event.getSource());

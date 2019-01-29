@@ -1,6 +1,7 @@
 package com.univ.event.basic;
 
 import org.springframework.context.ApplicationListener;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 /**
@@ -25,6 +26,7 @@ public class ScoreServiceImpl implements ScoreService, ApplicationListener<Regis
      * @param event
      */
     @Override
+    @Async
     public void onApplicationEvent(RegisterEvent event) {
         System.out.println("ScoreServiceImpl 当前线程：" + Thread.currentThread().getName());
         addScore((String) event.getSource());

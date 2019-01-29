@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * @author univ
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @ComponentScan({"com.univ.event.basic"})
+@EnableAsync    // 支持异步调用Enables Spring's asynchronous method execution capability
 public class EventTest {
 
     @Test
