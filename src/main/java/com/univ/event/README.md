@@ -27,7 +27,8 @@ spring从4.2以后的版本支持了注解形式的事件。
 * 事件发布者：直接获取ApplicationEventPublisher实例来发布事件代替实现ApplicationEventPublisherAware接口；
 * 事件订阅者：使用@EventListener修饰方法替换实现ApplicationListener接口
 
-
+## 顺序
+在订阅方法上新增@Order注解即可，数值越小，优先级越大
 
 
 

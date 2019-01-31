@@ -1,6 +1,7 @@
 package com.univ.event.annotation;
 
 import org.springframework.context.event.EventListener;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 /**
@@ -23,6 +24,7 @@ public class EmailServiceImpl implements EmailService{
      * @param event 订阅的事件(类型)
      */
     @EventListener
+    @Order(3)   // 数值越小则优先级越大
     public void register(RegisterEvent event) {
         System.out.println("EmailServiceImpl 当前线程：" + Thread.currentThread().getName());
         sendEmail((String) event.getSource());
