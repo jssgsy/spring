@@ -7,6 +7,7 @@ public class A {
 
     public void sing(){
         System.out.println("annotation: A.sing()");
+        throw new RuntimeException("runtime exception");
     }
 
 }

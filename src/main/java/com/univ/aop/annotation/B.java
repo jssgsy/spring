@@ -1,5 +1,6 @@
 package com.univ.aop.annotation;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
@@ -30,9 +31,19 @@ public class B {
         // throw new Exception("我抛出了一个异常");
         System.out.println("annotation:唱歌之后");
     }
-    
-    @AfterThrowing("perform()")
-    public void afterException() {
+
+    /**
+     * throwing：用来绑定抛出的异常信息
+     * @param ex
+     *
+     * 注：
+     * 1. @AfterThrowing可以捕捉到目标切点中的异常，但不能完全处理该异常，抛出的异常依然会传播到上一级调用者，直至传播到JVM，导致程序终止
+     * 2. 可以加一个joinPoint参数用来获取切点的相关信息，但只能放在第一个参数处
+     */
+    @AfterThrowing(pointcut = "perform()", throwing = "ex")
+    public void afterException(JoinPoint joinPoint, Throwable ex) {
+        System.out.println("joinPoint相关信息：" + joinPoint.getSignature().toString());
+        System.out.println("异常信息如下：" + ex.getMessage());
         System.out.println("annotation 执行过程中抛异常了");
     }
 }
