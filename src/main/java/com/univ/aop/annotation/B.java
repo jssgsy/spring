@@ -6,11 +6,13 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
 
 /**
  * 定义将要织入到目标类中的切面，如日志，事务，安全等。仅仅只是一个普通的类
  */
 @Aspect // 将Audience声明成一个切面，注意，此时Audience还需要在配置文件中配置使这成为一个真正的切面
+// @Component  // 如果没有在配置文件中定义此bean,则这里需要使用@Component以补spring扫描到
 public class B {
 
     // 定义一个切点，方法点就是切点名
