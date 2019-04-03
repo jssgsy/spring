@@ -15,7 +15,11 @@ import org.springframework.stereotype.Component;
 // @Component  // 如果没有在配置文件中定义此bean,则这里需要使用@Component以补spring扫描到
 public class B {
 
-    // 定义一个切点，方法点就是切点名
+    /**
+     * 定义一个切点，方法点就是切点名
+     *
+     * 重点：能被拦截的类必须是被Spring管理的，比如ArrayList等jar中的类是不能被拦截的
+     */
     @Pointcut("execution(* com.univ.aop.annotation.A.sing(..))")
     public void perform() {
 
