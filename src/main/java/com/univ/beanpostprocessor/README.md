@@ -1,0 +1,3 @@
+# BeanPostProcessor
+是一个勾子，`会被编织到Bean生命周期中的初始化过程中`。会被应用到所有Bean的初始化阶段。
+注意一个事实，BeanPostProcessor介入的时机是*Bean的默认初始化操作已经完成，任何其它初始化操作介入之前或之后*

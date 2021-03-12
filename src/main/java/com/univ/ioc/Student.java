@@ -1,8 +1,10 @@
 package com.univ.ioc;
 
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class Student {
+public class Student implements InitializingBean {
 	private String name;
 	private int age;	
 	
@@ -11,8 +13,12 @@ public class Student {
 	 */
 	@Autowired
 	private Teacher teacher;
-	
-	public String getName() {
+
+    public Student() {
+        System.out.println("Student的无参构造函数");
+    }
+
+    public String getName() {
 		return name;
 	}
 	public void setName(String name) {
@@ -27,7 +33,22 @@ public class Student {
 	public Teacher getTeacher() {
 		return teacher;
 	}
-	/*public void setTeacher(Teacher teacher) {
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("Student#afterPropertiesSet, this:" + this);
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", teacher=" + teacher +
+                '}';
+    }
+
+    /*public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
 	}*/
 }

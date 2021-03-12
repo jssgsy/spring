@@ -33,6 +33,10 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
         <!-- 	<property name="teacher" ref="teacher" /> -->
     </bean>
 
+    <bean id="univBeanPostProcessor" class="com.univ.beanpostprocessor.UnivBeanPostProcessor">
+
+    </bean>
+
     <!-- 这里的id必须为messageSource,经验证其实并非如此 -->
     <bean id="messageSource"
           class="org.springframework.context.support.ResourceBundleMessageSource">

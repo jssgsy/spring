@@ -1,9 +1,16 @@
 package com.univ.ioc;
 
-public class Teacher {
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+
+public class Teacher implements InitializingBean {
 
 	private String name;
 	private int age;
+
+    public Teacher() {
+        System.out.println("Teacher的无参构造函数");
+    }
 	
 	public String getName() {
 		return name;
@@ -17,5 +24,17 @@ public class Teacher {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("Teacher#afterPropertiesSet, this:" + this);
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
