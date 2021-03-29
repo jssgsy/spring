@@ -97,8 +97,8 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
     <aop:aspectj-autoproxy />
 
     <!--供注解形式的aop使用-->
-    <bean id="a_annotation" class="com.univ.aop.annotation.A"/>
-    <bean id="b_annotation" class="com.univ.aop.annotation.B"/>
+    <bean id="univServiceImpl" class="com.univ.aop.annotation.UnivServiceImpl"/>
+    <bean id="univAspect" class="com.univ.aop.annotation.UnivAspect"/>
     <!--################################注解aop end ################################-->
 
     <!--################################外部属性文件 begin ################################-->
