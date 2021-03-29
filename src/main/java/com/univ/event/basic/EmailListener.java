@@ -14,21 +14,15 @@ import org.springframework.stereotype.Service;
  *  2. 实现了ApplicationListener便有了订阅的能力，但此前提是此service需要在容器中存在实例(如这里使用的@Service)
  */
 @Service
-public class EmailServiceImpl implements EmailService, ApplicationListener<RegisterEvent>{
-
-    @Override
-    public void sendEmail(String name) {
-        System.out.println(name + " 收到邮件了");
-    }
+public class EmailListener implements ApplicationListener<EmailEvent>{
 
     /**
      * 当订阅的事件发生时需要采取的动作
      * @param event
      */
-    @Override
-    @Async  // 使此事件为异步事件
-    public void onApplicationEvent(RegisterEvent event) {
-        System.out.println("EmailServiceImpl 当前线程：" + Thread.currentThread().getName());
-        sendEmail((String) event.getSource());
+    // @Async  // 使此事件为异步事件
+    public void onApplicationEvent(EmailEvent event) {
+        System.out.println("EmailListenerServiceImpl监听到事件了 当前线程：" + Thread.currentThread().getName());
+
     }
 }

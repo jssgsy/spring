@@ -13,20 +13,18 @@ import org.springframework.stereotype.Service;
  *  这里实现了spring提供的ApplicationEventPublisherAware，此时此service便有了发布事件的能力，事件的发布需要ApplicationEventPublisher的支持
  */
 @Service
-public class UserServiceImpl implements UserService, ApplicationEventPublisherAware{
+public class EmailPublishServiceImpl implements EmailPublishService, ApplicationEventPublisherAware{
 
     /**
      * 事件是通过此对象发出的
      */
     private ApplicationEventPublisher applicationEventPublisher;
 
-    @Override
-    public void register(String name) {
-        System.out.println(name + " 被注册了。");
-        applicationEventPublisher.publishEvent(new RegisterEvent(name));
+    public void publish(String name) {
+        System.out.println("EmailPublishServiceImpl发布了EmailEvent事件，name" + name);
+        applicationEventPublisher.publishEvent(new EmailEvent(name));
     }
 
-    @Override
     public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
         this.applicationEventPublisher = applicationEventPublisher;
     }

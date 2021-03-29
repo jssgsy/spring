@@ -25,7 +25,6 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private ApplicationEventPublisher applicationEventPublisher;
 
-    @Override
     public void register(String name) {
         System.out.println(name + " 被注册了。");
         applicationEventPublisher.publishEvent(new RegisterEvent(name));

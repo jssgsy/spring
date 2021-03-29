@@ -9,7 +9,7 @@ import org.springframework.context.ApplicationEvent;
  *
  * 定义事件需要继承spring提供的ApplicationEvent
  */
-public class RegisterEvent extends ApplicationEvent {
+public class EmailEvent extends ApplicationEvent {
 
     /**
      * 注意
@@ -19,7 +19,7 @@ public class RegisterEvent extends ApplicationEvent {
      *
      * @param source the component that published the event (never {@code null})
      */
-    public RegisterEvent(String source) {
+    public EmailEvent(String source) {
         super(source);
     }
 }

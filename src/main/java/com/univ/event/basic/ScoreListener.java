@@ -14,9 +14,8 @@ import org.springframework.stereotype.Service;
  *  2. 实现了ApplicationListener便有了订阅的能力，但此前提是此service需要在容器中存在实例(如这里使用的@Service)
  */
 @Service
-public class ScoreServiceImpl implements ScoreService, ApplicationListener<RegisterEvent>{
+public class ScoreListener implements ApplicationListener<ScoreEvent>{
 
-    @Override
     public void addScore(String name) {
         System.out.println(name + " 积分增加了");
     }
@@ -25,9 +24,8 @@ public class ScoreServiceImpl implements ScoreService, ApplicationListener<Regis
      * 当订阅的事件发生时需要采取的动作
      * @param event
      */
-    @Override
-    @Async
-    public void onApplicationEvent(RegisterEvent event) {
+    // @Async
+    public void onApplicationEvent(ScoreEvent event) {
         System.out.println("ScoreServiceImpl 当前线程：" + Thread.currentThread().getName());
         addScore((String) event.getSource());
     }

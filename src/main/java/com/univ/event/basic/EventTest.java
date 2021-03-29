@@ -20,10 +20,10 @@ public class EventTest {
     @Test
     public void test1() {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(EventTest.class);
-        UserService userService = applicationContext.getBean(UserService.class);
+        EmailPublishService emailPublishService = applicationContext.getBean(EmailPublishService.class);
 
         // 注册的时候发送事件，此时订阅此事件的所有listener都可以收到
-        userService.register("zhangsan");
+        emailPublishService.publish("zhangsan");
     }
 
 }
