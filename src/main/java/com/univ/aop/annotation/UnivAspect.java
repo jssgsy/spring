@@ -56,6 +56,8 @@ public class UnivAspect {
      * 2. 相比较于@After，@AfterReturning可以获取到目标方法的执行结果。
      * 3. AfterReturning在After之后执行
      * 4. 这里的返回值必须通过returning指定，且需要和方法参数名保持一致
+     *
+     * 注：与@Around一起使用时，务必使@Around有返回值，因为此时@AfterReturning是从@Around接收返回值的
      */
     @AfterReturning(value = "basic_pointcut()", returning = "returnValue")
     public void afterReturn(JoinPoint joinPoint, Object returnValue) {
@@ -72,11 +74,11 @@ public class UnivAspect {
     }
 
     /**
-     * 注意：around之前在@Before之前，around之后在@After之后
+     * 注意：这里有返回值，因为@AfterReturning是从@Around接收返回值的，所以一起使用时如果没写返回值，则@AfterReturning是接收不到返回值的
      * @param joinPoint
      */
     @Around("basic_pointcut()")
-    public void around(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("【@Around通知-before】 ...");
 
         /*try {
@@ -87,8 +89,9 @@ public class UnivAspect {
         }*/
 
         // 注意将上面的注释放开执行看下结果
-        joinPoint.proceed();
+        Object proceed = joinPoint.proceed();
         System.out.println("【@Around通知-after】 ...");
+        return proceed;
     }
 
 }
